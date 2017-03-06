@@ -29,8 +29,9 @@ public class UserBO {
         return false;
     }
     
-    public boolean registerUser(UserVO user, UserDAO dao){
+    public boolean registerUser(UserVO user){
         try {
+            UserDAO dao = new UserDAO();
             return dao.insertUser(user);
         } catch (Exception e) {
             System.out.println(e);
@@ -38,14 +39,16 @@ public class UserBO {
         return false;
     }
     
-    private boolean userDelete(String username, String password, UserDAO dao) throws SQLException{
+    private boolean userDelete(String username, String password) throws SQLException{
         try{
-            UserVO user = dao.getUser(username, password);
-            if(user.getUsername() == null){
+            UserVO user = new UserVO(username,password);
+            UserDAO dao = new UserDAO();
+            UserVO userToDelete = dao.getUser(user);
+            if(userToDelete.getUsername() == null){
                 return false;
             } else {
                 try{
-                    return dao.deleteUser(username);
+                    return dao.deleteUser(userToDelete);
                 } catch (Exception e){
                     out.println("Impossível deletar usuário");
                     return false;
@@ -57,38 +60,50 @@ public class UserBO {
         }
     }
     
-    private boolean addFunds(String username, UserDAO dao, double value){
+    public boolean addFunds(String username, String password, double value){
         try {
-            return dao.updateFunds(username, dao.getFunds(username) + value);
+            UserVO user = new UserVO(username, password);
+            UserDAO dao = new UserDAO();
+            return dao.updateFunds(user, dao.getFunds(user) + value);
         } catch (Exception e) {
             System.out.println(e);
             return false;
         }
     }
     
-    private double getFunds(String username, UserDAO dao) {
+    public double getFunds(String username, String password) {
         try {
-            return dao.getFunds(username);
+            UserVO user = new UserVO(username, password);
+            UserDAO dao = new UserDAO();
+            return dao.getFunds(user);
         } catch (Exception e) {
             System.out.println(e);
             return -1;
         }  
     }
     
-    private boolean getPrivilege(String username, UserDAO dao) {
-        return dao.getAccountPrivilege(username);
+    public boolean getStatus(String username, String password, UserDAO dao) {
+        UserVO user = new UserVO(username, password);
+        return dao.getAccountStatus(user);
     }
     
-    private boolean upgradeAccount(String username, UserDAO dao) {
-        if (dao.getFunds(username) < 10){
+    public boolean upgradeAccount(String username, String password, UserDAO dao) {
+        UserVO user = new UserVO(username, password);
+        if (dao.getFunds(user) < 10){
             return false;
         } else {
             return dao.updateAccount(username);
         }
     }
-
-    public UserVO userLogin(String parameter, String parameter0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+    public UserVO userLogin(String username, String password) throws SQLException {
+        try {
+            UserVO user = new UserVO(username, password);
+            UserDAO dao = new UserDAO();
+            return dao.getUser(user);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

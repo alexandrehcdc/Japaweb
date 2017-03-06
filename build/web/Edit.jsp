@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Model.VO.userVO"%>
-<%@page import="Model.DAO.userDAO"%>
+<%@page import="Model.VO.UserVO"%>
+<%@page import="Model.DAO.UserDAO"%>
 <%
     userVO user = (userVO) session.getAttribute("currentSessionUser");
 %>

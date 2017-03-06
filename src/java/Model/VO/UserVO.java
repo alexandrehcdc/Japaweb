@@ -4,16 +4,27 @@
  * and open the template in the editor.
  */
 package Model.VO;
-
+import javax.faces.bean.ManagedBean;
 /**
  *
  * @author Alexandre
  */
+
+@ManagedBean
 public class UserVO {
     private String name, address, email, password, username;
     private int age;
     private boolean privilege = false;
     private double funds;
+
+    public UserVO(String username, String password) {
+        setUsername(username);
+        setPassword(password);
+    }
+
+    public UserVO() {
+        
+    }
     
     /////////////////////////////////////
     //GET AND SET NAME

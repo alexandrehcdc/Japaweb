@@ -73,17 +73,16 @@ public class UserDAO {
         return null;
     }
 
-    public UserVO getUser(String username, String password) throws SQLException {
+    public UserVO getUser(UserVO user) throws SQLException {
         String sql = "SELECT * FROM users WHERE username=? AND password=? ORDER BY name";
         PreparedStatement prepState;
         ResultSet resultSet;
         try {
             prepState = connection.prepareStatement(sql);
-            prepState.setString(1, username);
-            prepState.setString(2, password);
+            prepState.setString(1, user.getUsername());
+            prepState.setString(2, user.getUsername());
             resultSet = prepState.executeQuery();
             if(resultSet.next()){
-                UserVO user = new UserVO();
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
                 user.setAddress(resultSet.getString("address"));                
@@ -120,12 +119,13 @@ public class UserDAO {
         }
     }
     
-    public boolean deleteUser(String username){
-        String sql = "DELETE from users WHERE username=?";
+    public boolean deleteUser(UserVO user){
+        String sql = "DELETE from users WHERE username=? AND password=?";
         PreparedStatement prepState;
         try {
             prepState = connection.prepareStatement(sql);
-            prepState.setString(1, username);
+            prepState.setString(1, user.getUsername());
+            prepState.setString(2, user.getPassword());
             return true;
         } catch (SQLException sqle) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, sqle);
@@ -133,13 +133,15 @@ public class UserDAO {
         return false;
     }
     
-    public boolean updateFunds(String username, double value){
+    public boolean updateFunds(UserVO user, double value){
         String sql = "UPDATE users SET" +
-                "value=?" + "WHERE username=?";
+                "value=?" + "WHERE username=? AND password=?";
         PreparedStatement prepState;
         try {
             prepState = connection.prepareStatement(sql);
             prepState.setDouble(1, value);
+            prepState.setString(2, user.getUsername());
+            prepState.setString(3, user.getPassword());
             return true;
         } catch (SQLException sqle) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, sqle);
@@ -147,14 +149,14 @@ public class UserDAO {
         return false;
     }
     
-    public double getFunds(String username){
+    public double getFunds(UserVO user){
         double funds = 0;
-        String sql = "SELECT * FROM users WHERE username=?";
+        String sql = "SELECT funds FROM users WHERE username=? and password=?";
         PreparedStatement prepState;
         ResultSet resultSet = null;
         try {
             prepState = connection.prepareStatement(sql);
-            prepState.setString(1, username);
+            prepState.setString(1, user.getUsername());
             funds = resultSet.getDouble("funds");
             return funds;
         } catch (SQLException sqle) {
@@ -163,13 +165,14 @@ public class UserDAO {
         return funds;
     }
     
-    public boolean getAccountPrivilege(String username) {
+    public boolean getAccountStatus(UserVO user) {
         try {
-            String sql = "SELECT funds FROM user WHERE username=?";
+            String sql = "SELECT privilege FROM user WHERE username=? AND password=?";
             PreparedStatement prepState = null;
             ResultSet resultSet = null;
-            prepState.setString(1, username);
-            return resultSet.getBoolean("funds");
+            prepState.setString(1, user.getUsername());            
+            prepState.setString(2, user.getPassword());
+            return resultSet.getBoolean("privilege");
         } catch (SQLException sqle) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, sqle);
         }

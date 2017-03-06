@@ -5,10 +5,13 @@
  */
 package Model.VO;
 
+import javax.faces.bean.ManagedBean;
+
 /**
  *
  * @author Alexandre
  */
+@ManagedBean
 public class SellerVO extends UserVO{
     private String filiation;
     /////////////////////////////////////

@@ -5,10 +5,13 @@
  */
 package Model.VO;
 
+import javax.faces.bean.ManagedBean;
+
 /**
  *
  * @author Alexandre
  */
+@ManagedBean
 public class ProductVO {
     private int id;
     private String name,description,brand;
@@ -64,7 +67,7 @@ public class ProductVO {
     /////////////////////////////////////
     //GET AND SET WEIGHT
     public double getWeight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return weight;
     }
     
     public void setWeight(double weight){
