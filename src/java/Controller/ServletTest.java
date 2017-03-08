@@ -1,3 +1,5 @@
+package Controller;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -33,7 +35,7 @@ public class ServletTest extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
+            /*out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet ServletTest</title>");            
@@ -41,7 +43,7 @@ public class ServletTest extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet ServletTest at " + request.getContextPath() + "</h1>");
             out.println("</body>");
-            out.println("</html>");
+            out.println("</html>");*/
         }
     }
 
@@ -58,6 +60,10 @@ public class ServletTest extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        PrintWriter writer = response.getWriter();
+        writer.println("<html><body>");
+        writer.println("<br/>Dados dos alunos<br/>");
+        writer.println("</body></html>");
     }
 
     /**
