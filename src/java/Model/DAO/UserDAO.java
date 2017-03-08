@@ -6,8 +6,11 @@
 
 package Model.DAO;
 
+<<<<<<< HEAD
 import Model.VO.ProductVO;
 import Model.VO.TransactionsVO;
+=======
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
 import Model.VO.UserVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,7 +42,11 @@ public class UserDAO {
             prepState.setString(5, user.getAddress());
             prepState.setBoolean(6, user.getPrivilege());
             prepState.setString(7, user.getName());
+<<<<<<< HEAD
             prepState.execute(sql);
+=======
+            prepState.execute();
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
             return true;
         }
         catch (SQLException sqle){
@@ -49,11 +56,19 @@ public class UserDAO {
     }
     
     public List getAllUsers() throws SQLException {
+<<<<<<< HEAD
         try {
             String sql = "SELECT * FROM users ORDER BY name";
             PreparedStatement prepState;
             ResultSet resultSet;
             List<UserVO> userList = new ArrayList<UserVO>();
+=======
+        String sql = "SELECT * FROM users ORDER BY name";
+        PreparedStatement prepState;
+        ResultSet resultSet;
+        List<UserVO> userList = new ArrayList<UserVO>();
+        try {
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
             prepState = connection.prepareStatement(sql);
             resultSet = prepState.executeQuery();
             while(resultSet.next()){
@@ -76,10 +91,17 @@ public class UserDAO {
     }
 
     public UserVO getUser(UserVO user) throws SQLException {
+<<<<<<< HEAD
         try {
             String sql = "SELECT * FROM users WHERE username=? AND password=? ORDER BY name";
             PreparedStatement prepState;
             ResultSet resultSet;
+=======
+        String sql = "SELECT * FROM users WHERE username=? AND password=? ORDER BY name";
+        PreparedStatement prepState;
+        ResultSet resultSet;
+        try {
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
             prepState = connection.prepareStatement(sql);
             prepState.setString(1, user.getUsername());
             prepState.setString(2, user.getUsername());
@@ -103,9 +125,15 @@ public class UserDAO {
 
     
     public boolean userEdit(UserVO user) throws SQLException {
+<<<<<<< HEAD
         try {
             String sql = "UPDATE users SET name=?, address=?, age=?, email=?, password=? WHERE username=?";
             PreparedStatement prepState;
+=======
+        String sql = "UPDATE users SET name=?, address=?, age=?, email=?, password=? WHERE username=?";
+        PreparedStatement prepState;
+        try {
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
             prepState = connection.prepareStatement(sql);
             prepState.setString(1, user.getName());            
             prepState.setString(2, user.getAddress());
@@ -122,9 +150,15 @@ public class UserDAO {
     }
     
     public boolean deleteUser(UserVO user){
+<<<<<<< HEAD
         try {
             String sql = "DELETE from users WHERE username=? AND password=?";
             PreparedStatement prepState;
+=======
+        String sql = "DELETE from users WHERE username=? AND password=?";
+        PreparedStatement prepState;
+        try {
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
             prepState = connection.prepareStatement(sql);
             prepState.setString(1, user.getUsername());
             prepState.setString(2, user.getPassword());
@@ -136,10 +170,17 @@ public class UserDAO {
     }
     
     public boolean updateFunds(UserVO user, double value){
+<<<<<<< HEAD
         try {
             String sql = "UPDATE users SET" +
                 "value=?" + "WHERE username=? AND password=?";
             PreparedStatement prepState;
+=======
+        String sql = "UPDATE users SET" +
+                "value=?" + "WHERE username=? AND password=?";
+        PreparedStatement prepState;
+        try {
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
             prepState = connection.prepareStatement(sql);
             prepState.setDouble(1, value);
             prepState.setString(2, user.getUsername());
@@ -153,10 +194,17 @@ public class UserDAO {
     
     public double getFunds(UserVO user){
         double funds = 0;
+<<<<<<< HEAD
         try {
             String sql = "SELECT funds FROM users WHERE username=? and password=?";
             PreparedStatement prepState;
             ResultSet resultSet = null;
+=======
+        String sql = "SELECT funds FROM users WHERE username=? and password=?";
+        PreparedStatement prepState;
+        ResultSet resultSet = null;
+        try {
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
             prepState = connection.prepareStatement(sql);
             prepState.setString(1, user.getUsername());
             funds = resultSet.getDouble("funds");
@@ -181,6 +229,7 @@ public class UserDAO {
         return false;
     }
     
+<<<<<<< HEAD
     public boolean updateAccount(UserVO user){
         try {
             String sql = "UPDATE users SET privilege=true WHERE username=?";
@@ -188,12 +237,21 @@ public class UserDAO {
             ResultSet resultSet;           
             prepState.setString(1, user.getUsername());
             resultSet = prepState.executeQuery(sql);
+=======
+    public boolean updateAccount(String username){
+        try {
+            String sql = "UPDATE users SET privilege=true WHERE username=?";
+            PreparedStatement prepState = null;
+            ResultSet resultSet = null;           
+            prepState.setString(1, username);
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
             return true;
         } catch (SQLException sqle) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, sqle);            
         }
         return false;
     }
+<<<<<<< HEAD
     
     public List getUserTransactions(UserVO user) {
         try {
@@ -243,4 +301,6 @@ public class UserDAO {
         }
         return null;
     }
+=======
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
 }

@@ -92,7 +92,11 @@ public class UserBO {
         if (dao.getFunds(user) < 10){
             return false;
         } else {
+<<<<<<< HEAD
             return dao.updateAccount(user);
+=======
+            return dao.updateAccount(username);
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
         }
     }
     

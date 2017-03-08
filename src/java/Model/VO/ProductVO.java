@@ -17,6 +17,7 @@ public class ProductVO {
     private String name,description,brand;
     private double price,weight;
     
+<<<<<<< HEAD
     public ProductVO(int id, String name, String description, String brand, double price, double weight) {
         setId(id);
         setName(name);
@@ -29,6 +30,8 @@ public class ProductVO {
     public ProductVO() {
     }
     
+=======
+>>>>>>> 343f7f14220d0c3e686eb2fc7d876531691932aa
     /////////////////////////////////////
     //GET AND SET Id
     public int getId(){
