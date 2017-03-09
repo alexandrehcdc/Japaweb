@@ -1,4 +1,6 @@
 /dist/
+build
+/build/
 *.js
 *.css
 *.png
