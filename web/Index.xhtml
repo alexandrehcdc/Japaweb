@@ -8,41 +8,69 @@
         <h:outputStylesheet name="grid/grid.css" library="primefaces" />
         <title>Facelet Title</title>
         <ui:include src="masterpage.xhtml"/>
+        <style>
+            
+        html, body {
+            height: 100%;
+        }
+        body {
+        }
+        .page-content {
+            padding-top: 3.125rem;
+            min-height: 100%;
+            height: 100%;
+        }
+        .table .input-control.checkbox {
+            line-height: 1;
+            min-height: 0;
+            height: auto;
+        }
+
+        @media screen and (max-width: 800px){
+            #cell-sidebar {
+                flex-basis: 52px;
+            }
+            #cell-content {
+                flex-basis: calc(100% - 52px);
+            }
+        }
+    
+        </style>
     </h:head>
-    <h:body>
+    <h:body class="">
         <ui:include src="appbar.xhtml"/>
-        <br />
-    <h3>Sample Layout</h3>
-    <div class="ui-g">
-        <div class="ui-g-12 ui-md-2">M</div>
-        <div class="ui-g-12 ui-md-10 ui-g-nopad">
-            <div class="ui-g-12">
-                Bar
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-                <div class="ui-g">
-                    <div class="ui-g-12 ui-md-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet, orci nec dictum convallis, ligula mauris vestibulum turpis, nec varius tortor quam at diam. Nullam a viverra nibh. In tincidunt tempor lectus quis vulputate. Pellentesque nec dui aliquam, lobortis est in, lobortis ante</div>
-                    <div class="ui-g-12 ui-md-4">Maecenas vel nisi aliquet, vulputate tortor id, laoreet massa. Maecenas mattis tristique bibendum. Suspendisse vel mi dictum, vestibulum lacus quis, pulvinar quam. Proin vulputate, nibh at finibus varius, leo eros lacinia elit, nec blandit odio tellus a justo. Donec nec ex auctor, tristique nulla nec, rutrum sapien.</div>
-                    <div class="ui-g-12 ui-md-4">Proin efficitur in leo eget ornare. Nam vestibulum neque sed velit sagittis sodales. Sed scelerisque hendrerit magna a hendrerit. Cras tempor sem at justo pharetra convallis. Curabitur vel sodales purus. Vestibulum interdum facilisis nulla imperdiet suscipit. Quisque lectus felis, condimentum eget hendrerit sit amet.</div>
-                </div>
-
-                <div class="ui-g">
-                    <div class="ui-g-6 ui-md-3"><p:graphicImage name="demo/images/nature/nature1.jpg" style="width:100%"/></div>  
-                    <div class="ui-g-6 ui-md-3"><p:graphicImage name="demo/images/nature/nature2.jpg" style="width:100%"/></div> 
-                    <div class="ui-g-6 ui-md-3"><p:graphicImage name="demo/images/nature/nature3.jpg" style="width:100%"/></div>    
-                    <div class="ui-g-6 ui-md-3"><p:graphicImage name="demo/images/nature/nature4.jpg" style="width:100%"/></div>      
-                </div>
-
-                <div class="ui-g">
-                    <div class="ui-g-12 ui-md-6">Phasellus faucibus purus volutpat mauris lacinia sodales. Ut sit amet sapien facilisis, commodo dui non, fringilla tellus. Quisque tempus facilisis nisi sodales finibus. Pellentesque neque orci, ullamcorper vitae ligula quis, dignissim euismod augue.</div>
-                    <div class="ui-g-12 ui-md-6">Fusce ullamcorper congue massa, eget ullamcorper nunc lobortis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultrices dui eget dolor feugiat dapibus. Aliquam pretium leo et egestas luctus. Nunc facilisis gravida tellus.</div>
+        <div class="page-content">
+            <div class="flex-grid no-responsive-future" style="height: 100%">
+                <div class="row" style="height: 100%">
+                    <ui:include src="sidebar.xhtml"/>
+                    <div class="cell auto-size padding20 bg-white" id="cell-content">
+                        <h1 class="text-light">Produtos
+                            <span class="mif-drive-eta place-right"></span>
+                        </h1>
+                        <hr class="thin bg-grayLighter" />
+                        <p:commandButton value="Mais comprados" icon="ui-icon ui-icon-arrowreturnthick-1-e" class="button primary"> </p:commandButton>
+                        <p:commandButton value="Mais vistos" icon="ui-icon ui-icon-arrowreturnthick-1-e" class="button primary"> </p:commandButton>
+                        <p:commandButton value="Preço decrescente" icon="ui-icon ui-icon-arrowreturnthick-1-e" class="button primary"> </p:commandButton>
+                        <hr class="thin bg-grayLighter"/>
+                        
+                    <p:dataTable var="produtos" value="#" class="dataTable border bordered alinhar">
+                        <p:column headerText="Nome">
+                            <h:outputText value="#" />
+                        </p:column>
+                        <p:column headerText="Preço">
+                            <h:outputText value="#" />
+                        </p:column>
+                        <p:column headerText="Vendedor" >
+                            <h:outputText value="#" />
+                        </p:column>
+                        <p:column headerText="Peso">
+                            <h:outputText value="#" />
+                        </p:column>
+                    </p:dataTable>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="ui-g-12">
-            Footer
-        </div>
-    </div>
     </h:body>
 </html>
 
