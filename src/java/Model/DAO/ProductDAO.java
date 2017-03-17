@@ -134,6 +134,7 @@ public class ProductDAO {
                 nextProduct.setName(resultSet.getString("name_product"));               
                 nextProduct.setDescription(resultSet.getString("description"));
                 nextProduct.setWeight(resultSet.getDouble("weight"));
+                nextProduct.setId(resultSet.getInt("id"));
                 productList.add(nextProduct);
             }
             return productList;

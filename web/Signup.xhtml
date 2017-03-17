@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile">
+    <h:head>
+        <title>Facelet Title</title>
+        <ui:include src="masterpage.xhtml"/>
+        <style>
+            .login-form {
+                width: 25rem;
+                height: 22rem;
+                position: fixed;
+                top: 50%;
+                margin-top: -9.375rem;
+                left: 50%;
+                margin-left: -12.5rem;
+                background-color: #ffffff;            
+                -webkit-transform: scale(.8);
+                transform: scale(.8);
+            }
+            .logo {
+                    position: fixed;
+                    text-align: center;
+                    left: 40%;
+                    top: -5%;
+                    max-width: 100%;
+            }
+            font {
+                font-family: "Segoe UI";
+            }
+
+        </style>
+    </h:head>
+    <h:body class="font">
+        <h:form class="login-form padding20 block-shadow" onsubmit="return validateForm()">
+            <h2 class="text-light">Cadastro</h2>
+                <hr class="thin" />
+                <div class="input-control text full-size info">
+                    <pm:field>
+                        <p:inputText id="username" value="#{loginManager.username}" placeholder="Usuário" label="Nome" required="true" requiredMessage="Por favor, insira o seu nome de usuário."/>
+                        </pm:field>
+                </div>
+                <div class="input-control password full-size info">
+                    <pm:field>
+                        <p:password id="password" value="#{loginManager.password}" placeholder="Senha" required="true" requiredMessage="Por favor, insira a sua senha de usuário."/>
+                        <br/>
+                    </pm:field>
+                    </div>
+                <div class="input-control text full-size info">
+                    <pm:field>
+                        <p:inputText id="email" value="#{loginManager.email}" placeholder="Endereço de e-mail" label="email" required="true" requiredMessage="Por favor, insira o seu nome de usuário."/>
+                        </pm:field>
+                </div>
+                <div class="input-control text full-size info">
+                    <pm:field>
+                        <p:inputText id="age" value="#{loginManager.age}" placeholder="Idade" label="age" required="true" requiredMessage="Por favor, insira o seu nome de usuário."/>
+                        </pm:field>
+                </div>
+                <div class="form-actions">
+                    <br/>
+                    <p:commandButton value="Cadastro" icon="ui-icon ui-c ui-icon ui-icon-pencil" class="button primary" action="#{loginManager.doSignup}"/> 
+                </div>
+        </h:form> 
+   </h:body>
+</html>
+
