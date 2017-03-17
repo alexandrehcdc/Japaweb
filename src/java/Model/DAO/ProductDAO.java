@@ -7,6 +7,7 @@ package Model.DAO;
 
 import Model.VO.ProductVO;
 import Model.VO.SellerVO;
+import Model.VO.TransactionsVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -122,16 +123,16 @@ public class ProductDAO {
         try {
             List<ProductVO> productList = new ArrayList<ProductVO>();
             ResultSet resultSet;
-            String sql = "SELECT * from products ORDER BY ROWID";
+            String sql = "SELECT * from products ORDER BY name_product";
             PreparedStatement prepState;
             prepState = connection.prepareStatement(sql);
             resultSet = prepState.executeQuery();
             
             while(resultSet.next()){
                 ProductVO nextProduct = new ProductVO();
-                nextProduct.setId(resultSet.getInt("id"));
+                nextProduct.setPrice(resultSet.getDouble("price"));
                 nextProduct.setName(resultSet.getString("name_product"));               
-                nextProduct.setBrand(resultSet.getString("brand"));
+                nextProduct.setDescription(resultSet.getString("description"));
                 nextProduct.setWeight(resultSet.getDouble("weight"));
                 productList.add(nextProduct);
             }
@@ -146,6 +147,8 @@ public class ProductDAO {
         String sql = "SELECT * FROM products WHERE brand=? AND seller_ ORDER BY ROWID";
         PreparedStatement prepState;
         ResultSet resultSet;
+        prepState = connection.prepareStatement(sql);
+        resultSet = prepState.executeQuery();
         List<ProductVO> productList = new ArrayList<ProductVO>();
         try {
             prepState = connection.prepareStatement(sql);
@@ -165,4 +168,5 @@ public class ProductDAO {
         }
         return null;
     }
+    
 }

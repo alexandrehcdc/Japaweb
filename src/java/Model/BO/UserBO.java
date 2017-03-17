@@ -10,6 +10,7 @@ import Model.DAO.UserDAO;
 import Model.VO.UserVO;
 import static java.lang.System.out;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -101,6 +102,16 @@ public class UserBO {
             UserVO user = new UserVO(username, password);
             UserDAO dao = new UserDAO();
             return dao.getUser(user);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public List getOrders(UserVO user) {
+        try {
+            UserDAO dao = new UserDAO();
+            return dao.getUserTransactions(user);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
         }

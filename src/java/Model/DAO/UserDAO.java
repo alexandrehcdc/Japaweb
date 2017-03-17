@@ -197,16 +197,18 @@ public class UserDAO {
     
     public List getUserTransactions(UserVO user) {
         try {
-            String sql = "SELECT t.id AS ID, t.item_id AS ObjectID, u.username AS Username, t.seller_username AS Seller\n" +
-                "FROM transactions AS t\n" +
-                "INNER JOIN users AS u ON t.user_username=?";
+            String sql = "SELECT * FROM transactions WHERE user_username=?";
             ResultSet resultSet;
             List<TransactionsVO> transactionsList = new ArrayList<TransactionsVO>();
             PreparedStatement prepState = connection.prepareStatement(sql);
             prepState.setString(1, user.getUsername());
             resultSet = prepState.executeQuery(sql);
             while(resultSet.next()){
-                TransactionsVO transaction = new TransactionsVO(resultSet.getInt("ID"), resultSet.getInt("ObjectID"), resultSet.getString("Username"), resultSet.getString("Seller"));
+                TransactionsVO transaction = new TransactionsVO();
+                transaction.setId(resultSet.getInt("ID"));
+                transaction.setItemId(resultSet.getInt("ObjectID"));
+                transaction.setUserUsername(resultSet.getString("Username"));
+                transaction.setSellerUsername(resultSet.getString("Seller"));
                 transactionsList.add(transaction);
             }
             return transactionsList;

@@ -13,4 +13,14 @@
         <managed-bean-class>Controller.LoginManager</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>tableFeeder</managed-bean-name>
+        <managed-bean-class>Controller.tableFeeder</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>cartFeeder</managed-bean-name>
+        <managed-bean-class>Controller.cartFeeder</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

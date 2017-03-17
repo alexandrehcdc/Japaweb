@@ -17,13 +17,7 @@ public class TransactionsVO {
     private int itemId;
     private String sellerUsername;
     private String userUsername;
-    
-    public TransactionsVO(int id, int itemId, String sellerUsername, String userUsername) {
-        setId(id);
-        setItemId(itemId);
-        setSellerUsername(sellerUsername);
-        setUserUsername(userUsername);
-    }
+    private String trackingNumber;
     
     public TransactionsVO() {
     }
@@ -59,5 +53,13 @@ public class TransactionsVO {
     }    
     public void setUserUsername(String userUsername){
         this.userUsername = userUsername;
+    }
+    /////////////////////////////////////
+    //GET AND SET TRACKING NUMBER
+    public void setTrackingNumber(String trackingNumber) {
+        this.trackingNumber = trackingNumber;
+    }
+    public String getTrackingNumber() {
+        return trackingNumber;
     }
 }

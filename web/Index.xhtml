@@ -26,20 +26,20 @@
                         <p:button icon="ui-icon-arrowthick-1-n" value="Preço crescente"/>
                         <hr class="thin bg-grayLighter"/>
                         
-                        <p:dataTable var="produtos" value="#{tableFeeder.listOfProducts}" class="dataTable border bordered alinhar">
-                        <p:column headerText="Nome" style="text-align: center;">
-                            <h:outputText value="#{produtos.name}" />
-                        </p:column>
-                        <p:column headerText="Preço" style="text-align: center;">
-                            <h:outputText value="#{produtos.price}" />
-                        </p:column>
-                        <p:column headerText="Descrição" style="text-align: center;">
-                            <h:outputText value="#{produtos.description}" />
-                        </p:column>
-                        <p:column headerText="Peso" style="text-align: center;">
-                            <h:outputText value="#{produtos.weight}" />
-                        </p:column>
-                    </p:dataTable>
+                        <p:dataTable var="produtos" value="#{tableFeeder.products}" class="dataTable border bordered alinhar">
+                            <p:column headerText="Nome" style="text-align: center;">
+                                <h:outputText value="#{produtos.name}" />
+                            </p:column>
+                            <p:column headerText="Preço" style="text-align: center;">
+                                <h:outputText value="#{produtos.price}" />
+                            </p:column>
+                            <p:column headerText="Descrição" style="text-align: center;">
+                                <h:outputText value="#{produtos.description}" />
+                            </p:column>
+                            <p:column headerText="Peso" style="text-align: center;">
+                                <h:outputText value="#{produtos.weight}" />
+                            </p:column>
+                        </p:dataTable>
                     </div>
                 </div>
             </div>
