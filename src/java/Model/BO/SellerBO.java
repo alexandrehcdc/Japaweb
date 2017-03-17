@@ -6,7 +6,6 @@
 package Model.BO;
 
 import Model.DAO.ProductDAO;
-import Model.DAO.UserDAO;
 import Model.VO.ProductVO;
 import Model.VO.SellerVO;
 import java.sql.SQLException;

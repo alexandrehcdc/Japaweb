@@ -4,19 +4,25 @@
  * and open the template in the editor.
  */
 package Model.VO;
+import java.util.Date;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 /**
  *
  * @author Alexandre
  */
 
-@ManagedBean
+@ManagedBean(name = "UserBean", eager = true)
+@SessionScoped
 public class UserVO {
     private String name, address, email, password, username;
     private int age;
     private boolean privilege = false;
     private double funds;
-
+    Date date = new Date();
+    Package pack = date.getClass().getPackage();
+    String packageName = pack.getName();
+   
     public UserVO(String username, String password) {
         setUsername(username);
         setPassword(password);

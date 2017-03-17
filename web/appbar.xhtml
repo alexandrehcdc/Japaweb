@@ -1,18 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
         <div class="app-bar fixed-top thin darcula" data-role="appbar">
             <div class="app-bar-element branding">Japaweb</div>
             <span class="app-bar-divider"/>
             <ul class="app-bar-menu">
-                <li><a href="Index.jsp">Início</a></li>
-                <li><a href="Edit.jsp">Perfil</a></li>
+                <li><a href="Index.xhtml">Início</a></li>
+                <li><a href="Profile.xhtml">Perfil</a></li>
             </ul>
             <div class="app-bar-element place-right">
                 <ul class="app-bar-menu">
-                    <li><a href="Sig nout">Sair</a></li>
+                    <li>
+                        <p:button value="Sair" icon="ui-icon-star" style="border-style : none; color: #ffffff; font-style: thin;">
+                        <f:param name="productId" value="10" />
+                    </p:button>
+                    </li>
                 </ul>
                 </div>
         </div>

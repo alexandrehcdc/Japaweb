@@ -4,41 +4,31 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>/WEB-INF/faces-config123.xml</param-value>
+    </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.xhtml</url-pattern>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>Signout</servlet-name>
         <servlet-class>Controller.Signout</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>Faces Servlet</servlet-name>
-        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Edit</servlet-name>
-        <url-pattern>/Edit</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Signout</servlet-name>
         <url-pattern>/Signout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>/web</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>Controller.Login</servlet-class>
@@ -48,51 +38,36 @@
         <servlet-class>Controller.Signup</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Index</servlet-name>
-        <servlet-class>Controller.Index</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Edit</servlet-name>
         <servlet-class>Controller.Edit</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <servlet-class>Controller.Index</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>faces/Index.xhtml</welcome-file>
-        <welcome-file>Index.java</welcome-file>
+        <welcome-file>faces/Login.xhtml</welcome-file>
+        <welcome-file>Login.xhtml</welcome-file>
     </welcome-file-list>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
     <error-page>
         <error-code>404</error-code>
         <location>/standard404.xhtml</location>
     </error-page>
-    <!--   Servlet INDEX
-    <servlet>
-        <servlet-name>Index</servlet-name>
-        <servlet-class>Controller.Index</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Index</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-     Servlet LOGIN 
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>Controller.Login</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Controller/Login</url-pattern>
-    </servlet-mapping>
-     Servlet PROFILE
-    <servlet>
-        <servlet-name>Profile</servlet-name>
-        <servlet-class>Controller.Profile</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Profile</servlet-name>
-        <url-pattern>/Controller/Profile</url-pattern>
-    </servlet-mapping> 
-     FILTERS -->
+    <!--    <filter>
+        <filter-name>SessionFilter</filter-name>
+        <filter-class>Controller.SessionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
 </web-app>

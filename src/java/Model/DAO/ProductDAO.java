@@ -43,13 +43,24 @@ public class ProductDAO {
         return false;
     }
     
+    public int getQuantityProducts() throws SQLException {
+        try {
+            String sql = "SELECT count(*) FROM products";
+            ResultSet resultSet = null;
+            return resultSet.getInt("count()");
+        } catch (SQLException sqle) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, sqle);
+        }
+        return 0;
+    }
+    
     public List getAllSellerProducts(SellerVO seller) throws SQLException {
         String sql = "SELECT * FROM products WHERE seller_username=? ORDER BY ROWID";
-        PreparedStatement prepState;
+        PreparedStatement prepState = connection.prepareStatement(sql);
         ResultSet resultSet;
+        prepState.setString(1, seller.getUsername());
         List<ProductVO> productList = new ArrayList<ProductVO>();
         try {
-            prepState = connection.prepareStatement(sql);
             prepState.setString(1, seller.getUsername());
             resultSet = prepState.executeQuery();
             while(resultSet.next()){
@@ -106,17 +117,14 @@ public class ProductDAO {
         return false;
     }    
     
-    public List getProducts (ProductVO product, SellerVO seller) {
+    public List getAllProducts () {
         
         try {
             List<ProductVO> productList = new ArrayList<ProductVO>();
             ResultSet resultSet;
-            String sql = "SELECT * from products WHERE name_product=? AND seller_username=? ORDER BY ROWID";
+            String sql = "SELECT * from products ORDER BY ROWID";
             PreparedStatement prepState;
             prepState = connection.prepareStatement(sql);
-            
-            prepState.setString(1, product.getName());            
-            prepState.setString(2, seller.getUsername());
             resultSet = prepState.executeQuery();
             
             while(resultSet.next()){
@@ -124,9 +132,9 @@ public class ProductDAO {
                 nextProduct.setId(resultSet.getInt("id"));
                 nextProduct.setName(resultSet.getString("name_product"));               
                 nextProduct.setBrand(resultSet.getString("brand"));
+                nextProduct.setWeight(resultSet.getDouble("weight"));
                 productList.add(nextProduct);
             }
-            
             return productList;
         } catch (SQLException sqle) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, sqle);
@@ -134,7 +142,7 @@ public class ProductDAO {
         return null;
     }
     
-        public List getAllProductsByBrand(ProductVO product, SellerVO seller) throws SQLException {
+    public List getAllProductsByBrand(ProductVO product, SellerVO seller) throws SQLException {
         String sql = "SELECT * FROM products WHERE brand=? AND seller_ ORDER BY ROWID";
         PreparedStatement prepState;
         ResultSet resultSet;

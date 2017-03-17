@@ -15,21 +15,20 @@
                 <hr class="thin" />
                 <div class="input-control text full-size">
                     <pm:field>
-                        <p:inputText placeholder="Usuário" label="Nome" required="true" requiredMessage="Por favor, insira o seu nome de usuário."/>
+                        <p:inputText id="username" value="#{loginManager.username}" placeholder="Usuário" label="Nome" required="true" requiredMessage="Por favor, insira o seu nome de usuário."/>
                         </pm:field>
                 </div>
                 <div class="input-control password full-size">
                     <pm:field>
-                        <p:password id="password" placeholder="Senha" required="true" requiredMessage="Por favor, insira a sua senha de usuário."/>
+                        <p:password id="password" value="#{loginManager.password}" placeholder="Senha" required="true" requiredMessage="Por favor, insira a sua senha de usuário."/>
                         <br/>
                     </pm:field>
                     </div>
                 <div class="form-actions">
                     <br/>
-                    <p:commandButton value="Enviar" icon="ui-icon ui-icon-arrowreturnthick-1-e" class="button primary"/>
-                    <p:commandButton value="Cadastro" icon="ui-icon ui-icon-pencil" class="button secondary"/>
+                    <p:commandButton value="Entrar" icon="ui-icon ui-c ui-icon ui-icon-arrowreturnthick-1-e" class="button primary" action="#{loginManager.doLogin}"/> 
+                    <p:commandButton value="Cadastro" icon="ui-icon ui-icon-pencil" class="button secondary" action="#{loginManager.goToSignup}"/>
                 </div>
-                
         </h:form> 
    </h:body>
 </html>

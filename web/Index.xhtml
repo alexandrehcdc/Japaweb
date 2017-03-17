@@ -6,38 +6,11 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <h:outputStylesheet name="grid/grid.css" library="primefaces" />
-        <title>Facelet Title</title>
+        <title>Início - Japaweb</title>
         <ui:include src="masterpage.xhtml"/>
-        <style>
-            
-        html, body {
-            height: 100%;
-        }
-        body {
-        }
-        .page-content {
-            padding-top: 3.125rem;
-            min-height: 100%;
-            height: 100%;
-        }
-        .table .input-control.checkbox {
-            line-height: 1;
-            min-height: 0;
-            height: auto;
-        }
-
-        @media screen and (max-width: 800px){
-            #cell-sidebar {
-                flex-basis: 52px;
-            }
-            #cell-content {
-                flex-basis: calc(100% - 52px);
-            }
-        }
-    
-        </style>
+        <link href="utils/indexcss.css" rel="stylesheet" />
     </h:head>
-    <h:body class="">
+    <h:body>
         <ui:include src="appbar.xhtml"/>
         <div class="page-content">
             <div class="flex-grid no-responsive-future" style="height: 100%">
@@ -45,26 +18,26 @@
                     <ui:include src="sidebar.xhtml"/>
                     <div class="cell auto-size padding20 bg-white" id="cell-content">
                         <h1 class="text-light">Produtos
-                            <span class="mif-drive-eta place-right"></span>
+                            <span class="mif-shopping-basket2 place-right"></span>
                         </h1>
                         <hr class="thin bg-grayLighter" />
-                        <p:commandButton value="Mais comprados" icon="ui-icon ui-icon-arrowreturnthick-1-e" class="button primary"> </p:commandButton>
-                        <p:commandButton value="Mais vistos" icon="ui-icon ui-icon-arrowreturnthick-1-e" class="button primary"> </p:commandButton>
-                        <p:commandButton value="Preço decrescente" icon="ui-icon ui-icon-arrowreturnthick-1-e" class="button primary"> </p:commandButton>
+                        <p:button icon="ui-icon-star" value="Mais vistos"/>
+                        <p:button icon="ui-icon-arrowthick-1-s" value="Preço decrescente"/>
+                        <p:button icon="ui-icon-arrowthick-1-n" value="Preço crescente"/>
                         <hr class="thin bg-grayLighter"/>
                         
-                    <p:dataTable var="produtos" value="#" class="dataTable border bordered alinhar">
-                        <p:column headerText="Nome">
-                            <h:outputText value="#" />
+                        <p:dataTable var="produtos" value="#{tableFeeder.listOfProducts}" class="dataTable border bordered alinhar">
+                        <p:column headerText="Nome" style="text-align: center;">
+                            <h:outputText value="#{produtos.name}" />
                         </p:column>
-                        <p:column headerText="Preço">
-                            <h:outputText value="#" />
+                        <p:column headerText="Preço" style="text-align: center;">
+                            <h:outputText value="#{produtos.price}" />
                         </p:column>
-                        <p:column headerText="Vendedor" >
-                            <h:outputText value="#" />
+                        <p:column headerText="Descrição" style="text-align: center;">
+                            <h:outputText value="#{produtos.description}" />
                         </p:column>
-                        <p:column headerText="Peso">
-                            <h:outputText value="#" />
+                        <p:column headerText="Peso" style="text-align: center;">
+                            <h:outputText value="#{produtos.weight}" />
                         </p:column>
                     </p:dataTable>
                     </div>

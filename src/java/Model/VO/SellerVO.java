@@ -12,7 +12,7 @@ import javax.faces.bean.ManagedBean;
  * @author Alexandre
  */
 @ManagedBean
-public class SellerVO extends UserVO{
+public final class SellerVO extends UserVO{
     private String filiation;
     /////////////////////////////////////
     //GET AND SET NAME
